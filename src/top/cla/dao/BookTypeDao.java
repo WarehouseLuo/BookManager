@@ -75,6 +75,7 @@ public class BookTypeDao {
 	public boolean deleteBookType(Connection con,int id) throws Exception {
 		String sql = "delete from t_booktype where id=?";//定义mysql语句
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, id);
 		int result = ps.executeUpdate();
 		//判断是否删除成功
 		if(result > 0) {

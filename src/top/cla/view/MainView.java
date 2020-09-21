@@ -106,6 +106,11 @@ public class MainView extends JFrame {
 		menuBar.add(mnNewMenu_1_2);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("   \u5E2E\u52A9  ");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				helpActionPerformed(e);//显示帮助窗口
+			}
+		});
 		mnNewMenu_1_2.add(mntmNewMenuItem_5);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -119,6 +124,16 @@ public class MainView extends JFrame {
 		this.setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * 显示帮助窗口
+	 * @param e
+	 */
+	protected void helpActionPerformed(ActionEvent e) {
+		helpView hv = new helpView();
+		hv.setVisible(true);
+		desktopPane.add(hv);
+	}
+
 	/**
 	 * 显示图书类型管理窗口
 	 */

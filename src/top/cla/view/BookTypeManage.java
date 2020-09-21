@@ -131,6 +131,11 @@ public class BookTypeManage extends JInternalFrame {
 		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
 		
 		JButton button_2 = new JButton("\u5220\u9664");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deleteActionPerformed(e);
+			}
+		});
 		button_2.setIcon(new ImageIcon(BookTypeManage.class.getResource("/images/delete.png")));
 		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -250,6 +255,58 @@ public class BookTypeManage extends JInternalFrame {
 		this.showBookTypeTable(totalBt);
 	}
 	
+	/*
+	 * 指定图书类型名字进行查询
+	 */
+	protected void selectBookTypeNameActionPerformed(ActionEvent e) {
+		String selectName = text_select_name.getText();//获取用户输入的查询字符串
+		BookType bt = new BookType();
+		bt.setBookTypeName(selectName);
+		this.showBookTypeTable(bt);
+	}
+	
+	/**
+	 * 删除一条图书类别信息
+	 * @param e
+	 */
+	protected void deleteActionPerformed(ActionEvent e) {
+		int id = Integer.parseInt(text_form_id.getText());//获取选中的id值
+		Connection con = null;
+		
+		try {
+			con = dbUtil.getCon();//连接数据库
+			boolean result = btd.deleteBookType(con, id);//调用删除图书类别方法删除选中的图书
+			//判断是否删除成功
+			if(result) {
+				//删除成功
+				JOptionPane.showMessageDialog(null, "删除成功！");
+				
+				//清空整个表单
+				text_form_id.setText("");
+				text_form_name.setText("");
+				text_form_desc.setText("");
+				
+				this.showBookTypeTable(new BookType());//再遍历一遍整张图书类型表
+			}else {
+				//删除失败
+				JOptionPane.showMessageDialog(null, "删除失败！");
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally {
+			try {
+				dbUtil.closeCon(con);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	/*
+	 * 修改一条图书类别信息
+	 */
 	protected void exchangeBookTypeActionPerformed(ActionEvent e) {
 		int id = Integer.parseInt(text_form_id.getText());
 		String name = text_form_name.getText();
@@ -286,17 +343,7 @@ public class BookTypeManage extends JInternalFrame {
 	}
 
 	/*
-	 * 指定图书类型名字进行查询
-	 */
-	protected void selectBookTypeNameActionPerformed(ActionEvent e) {
-		String selectName = text_select_name.getText();//获取用户输入的查询字符串
-		BookType bt = new BookType();
-		bt.setBookTypeName(selectName);
-		this.showBookTypeTable(bt);
-	}
-
-	/*
-	 * 查询数据库并将查询到的结果显示在表格组件中
+	 * 查询数据库并将查询到的结果显示在表格组件中，如果传入的对象里的图书类别名称为空，则遍历整个图书类别表；如果不为空则按照图书类别进行模糊查询
 	 */
 	@SuppressWarnings("unchecked")
 	public void showBookTypeTable(BookType bt) {

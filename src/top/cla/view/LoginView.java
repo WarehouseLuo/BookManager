@@ -159,6 +159,10 @@ public class LoginView extends JFrame {
 	}
 	
 
+	/**
+	 * 用户登录
+	 * @param evt
+	 */
 	public void userLoginActionPerformed(ActionEvent evt) {
 		
 		//从输入框获取用户输入信息

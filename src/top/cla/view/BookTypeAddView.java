@@ -69,6 +69,11 @@ public class BookTypeAddView extends JInternalFrame {
 		text_type_name.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("\u91CD\u7F6E");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resetActionPerformed(e);
+			}
+		});
 		btnNewButton_1.setIcon(new ImageIcon(BookTypeAddView.class.getResource("/images/reset.png")));
 		btnNewButton_1.setFont(new Font("宋体", Font.PLAIN, 18));
 		
@@ -132,6 +137,15 @@ public class BookTypeAddView extends JInternalFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 
+	}
+	
+	/**
+	 * 重置所有表单信息
+	 * @param e
+	 */
+	protected void resetActionPerformed(ActionEvent e) {
+		text_type_name.setText("");
+		text_type_describe.setText("");
 	}
 
 	/**
