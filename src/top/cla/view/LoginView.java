@@ -69,15 +69,15 @@ public class LoginView extends JFrame {
 		JLabel lblNewLabel = new JLabel("\u56FE\u4E66\u7BA1\u7406\u7CFB\u7EDF");
 		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/logo.png")));
 		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setFont(new Font("»ªÎÄÏ¸ºÚ", Font.BOLD, 38));
+		lblNewLabel.setFont(new Font("åæ–‡ç»†é»‘", Font.BOLD, 38));
 		
 		JLabel lblNewLabel_1 = new JLabel("\u7528\u6237\u540D\uFF1A");
-		lblNewLabel_1.setFont(new Font("ËÎÌå", Font.PLAIN, 18));
+		lblNewLabel_1.setFont(new Font("å®‹ä½“", Font.PLAIN, 18));
 		lblNewLabel_1.setIcon(new ImageIcon(LoginView.class.getResource("/images/userName.png")));
 		
 		JLabel lblNewLabel_2 = new JLabel("\u5BC6  \u7801\uFF1A");
 		lblNewLabel_2.setIcon(new ImageIcon(LoginView.class.getResource("/images/password.png")));
-		lblNewLabel_2.setFont(new Font("ËÎÌå", Font.PLAIN, 18));
+		lblNewLabel_2.setFont(new Font("å®‹ä½“", Font.PLAIN, 18));
 		
 		text_user_name = new JTextField();
 		text_user_name.setColumns(10);
@@ -91,12 +91,12 @@ public class LoginView extends JFrame {
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setIcon(new ImageIcon(LoginView.class.getResource("/images/login.png")));
 		btnNewButton.setBackground(new Color(255, 255, 255));
-		btnNewButton.setFont(new Font("ËÎÌå", Font.PLAIN, 18));
+		btnNewButton.setFont(new Font("å®‹ä½“", Font.PLAIN, 18));
 		
 		JButton btnNewButton_1 = new JButton("\u6CE8\u518C");
 		btnNewButton_1.setIcon(new ImageIcon(LoginView.class.getResource("/images/addUser.png")));
 		btnNewButton_1.setForeground(Color.BLACK);
-		btnNewButton_1.setFont(new Font("ËÎÌå", Font.PLAIN, 18));
+		btnNewButton_1.setFont(new Font("å®‹ä½“", Font.PLAIN, 18));
 		btnNewButton_1.setBackground(Color.WHITE);
 		
 		JLabel lblNewLabel_3 = new JLabel("\u6700\u7EC8\u89E3\u91CA\u6743\u5F52\u7F57\u7AE3\u6E90\u6240\u6709");
@@ -154,46 +154,46 @@ public class LoginView extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 		
-		//ÉèÖÃµ¯´°¾ÓÖĞÏÔÊ¾
+		//è®¾ç½®å¼¹çª—å±…ä¸­æ˜¾ç¤º
 		this.setLocationRelativeTo(null);
 	}
 	
 
 	/**
-	 * ÓÃ»§µÇÂ¼
+	 * ç”¨æˆ·ç™»å½•
 	 * @param evt
 	 */
 	public void userLoginActionPerformed(ActionEvent evt) {
 		
-		//´ÓÊäÈë¿ò»ñÈ¡ÓÃ»§ÊäÈëĞÅÏ¢
+		//ä»è¾“å…¥æ¡†è·å–ç”¨æˆ·è¾“å…¥ä¿¡æ¯
 		String loginName = this.text_user_name.getText();
 		String loginPassward = new String(this.text_passward.getPassword());
 		
 		if(StringUtil.strIsEmpty(loginName)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");//µ¯´°ÏÔÊ¾
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åä¸èƒ½ä¸ºç©ºï¼");//å¼¹çª—æ˜¾ç¤º
 			return;
 		}
 		
 		if(StringUtil.strIsEmpty(loginPassward)) {
-			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");//µ¯´°ÏÔÊ¾
+			JOptionPane.showMessageDialog(null, "å¯†ç ä¸èƒ½ä¸ºç©ºï¼");//å¼¹çª—æ˜¾ç¤º
 			return;
 		}
 		
-		User u = new User(loginName,loginPassward);//ÊµÀı»¯Ò»¸öÓÃ»§¶ÔÏó
+		User u = new User(loginName,loginPassward);//å®ä¾‹åŒ–ä¸€ä¸ªç”¨æˆ·å¯¹è±¡
 		Connection con = null;
 		
 		
-		//Á¬½ÓÊı¾İ¿â
+		//è¿æ¥æ•°æ®åº“
 		try {
-			con = dataBase.getCon();//ÓëÊı¾İ¿â½¨Á¢Á¬½Ó
-			User resultUser = userdao.login(con, u);//µÇÂ¼²Ù×÷
+			con = dataBase.getCon();//ä¸æ•°æ®åº“å»ºç«‹è¿æ¥
+			User resultUser = userdao.login(con, u);//ç™»å½•æ“ä½œ
 			
-			//ÅĞ¶ÏÊÇ·ñµÇÂ¼³É¹¦
+			//åˆ¤æ–­æ˜¯å¦ç™»å½•æˆåŠŸ
 			if(resultUser != null) {
-				dispose();//¹Ø±Õµ±Ç°µÇÂ¼´°¿Ú
+				dispose();//å…³é—­å½“å‰ç™»å½•çª—å£
 				new MainView().setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, "ÄúÊäÈëµÄÕËºÅ»òÃÜÂëÓĞÎó£¬ÇëÖØĞÂÊäÈë");
+				JOptionPane.showMessageDialog(null, "æ‚¨è¾“å…¥çš„è´¦å·æˆ–å¯†ç æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥");
 			}
 			
 		}catch(Exception e) {

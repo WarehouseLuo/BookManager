@@ -7,35 +7,35 @@ import java.sql.ResultSet;
 import top.cla.model.User;
 
 /**
- * ÓÃ»§Êı¾İ·ÃÎÊÀà(Êı¾İ¿â½Ó¿Ú)
+ * ç”¨æˆ·æ•°æ®è®¿é—®ç±»(æ•°æ®åº“æ¥å£)
  * @author 12049
  *
  */
 public class UserDao {
 	
 	/**
-	 * ÓÃ»§µÇÂ¼DAO
-	 * ÊµÏÖÓÃ»§µÇÂ¼½Ó¿Ú
+	 * ç”¨æˆ·ç™»å½•DAO
+	 * å®ç°ç”¨æˆ·ç™»å½•æ¥å£
 	 * @param con
 	 * @param u
 	 * @return User
 	 * @throws Exception
 	 */
 	public User login(Connection con,User u) throws Exception {
-		User resultUser = null;//Òª·µ»ØµÄÓÃ»§¶ÔÏó
-		String sql = "select * from t_user where userName=? and passward=?";//mySQLÓï¾ä
+		User resultUser = null;//è¦è¿”å›çš„ç”¨æˆ·å¯¹è±¡
+		String sql = "select * from t_user where userName=? and passward=?";//mySQLè¯­å¥
 		
-		//Îª·¢ËÍÓï¾ä¸øÊı¾İ¿â×ö×¼±¸
+		//ä¸ºå‘é€è¯­å¥ç»™æ•°æ®åº“åšå‡†å¤‡
 		PreparedStatement ps = con.prepareStatement(sql);
-		//½«Òª²éÑ¯µÄÓÃ»§ĞÅÏ¢Æ´½ÓÈëmySQLÓï¾äµÄÎÊºÅÖ®ÖĞ
+		//å°†è¦æŸ¥è¯¢çš„ç”¨æˆ·ä¿¡æ¯æ‹¼æ¥å…¥mySQLè¯­å¥çš„é—®å·ä¹‹ä¸­
 		ps.setString(1, u.getUserName());
 		ps.setString(2, u.getPassward());
 		
-		//Ö´ĞĞMySQLÓï¾ä
+		//æ‰§è¡ŒMySQLè¯­å¥
 		ResultSet res = ps.executeQuery();
 		if(res.next()) {
 			resultUser = new User();
-			//½«Êı¾İ¿â·µ»ØµÄÊı¾İĞ´ÈëÒª·µ»ØµÄÓÃ»§¶ÔÏóÖĞ
+			//å°†æ•°æ®åº“è¿”å›çš„æ•°æ®å†™å…¥è¦è¿”å›çš„ç”¨æˆ·å¯¹è±¡ä¸­
 			resultUser.setUserName(res.getString("userName"));
 			resultUser.setPassward(res.getString("passward"));
 		}

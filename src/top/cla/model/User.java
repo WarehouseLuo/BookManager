@@ -1,14 +1,14 @@
 package top.cla.model;
 
 /**
- * ÓÃ»§Àà
+ * ç”¨æˆ·ç±»
  * @author 12049
  *
  */
 public class User {
-	private int id;//ÓÃ»§id
-	private String userName;//ÓÃ»§Ãû
-	private String passward;//ÓÃ»§ÃÜÂë
+	private int id;//ç”¨æˆ·id
+	private String userName;//ç”¨æˆ·å
+	private String passward;//ç”¨æˆ·å¯†ç 
 	
 	public int getId() {
 		return id;
@@ -35,7 +35,7 @@ public class User {
 	}
 	
 	/**
-	 * ÓĞ²Î¹¹Ôìº¯Êı
+	 * æœ‰å‚æ„é€ å‡½æ•°
 	 * @param userName
 	 * @param passward
 	 */
@@ -46,7 +46,7 @@ public class User {
 	}
 	
 	/**
-	 * ÎŞ²Î¹¹Ôìº¯Êı
+	 * æ— å‚æ„é€ å‡½æ•°
 	 */
 	public User() {
 		super();

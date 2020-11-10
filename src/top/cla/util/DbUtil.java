@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 
 /**
-  *  ·â×°Á¬½ÓÊı¾İ¿âÀà
+  *  å°è£…è¿æ¥æ•°æ®åº“ç±»
  */
 public class DbUtil {
 	private String dbUrl = "jdbc:mysql://localhost:3306/db_book";
@@ -15,7 +15,7 @@ public class DbUtil {
 	private String jdbcName = "com.mysql.jdbc.Driver";
 	
 	/**
-	  *  Á¬½ÓÊı¾İ¿â·½·¨
+	  *  è¿æ¥æ•°æ®åº“æ–¹æ³•
 	 * @throws Exception 
 	 * @return Connection
 	 */
@@ -26,7 +26,7 @@ public class DbUtil {
 	}
 	
 	/**
-	 * ¶Ï¿ªÁ¬½ÓÊı¾İ¿â·½·¨
+	 * æ–­å¼€è¿æ¥æ•°æ®åº“æ–¹æ³•
 	 */
 	public void closeCon(Connection con) throws Exception {
 		if(con != null) {
@@ -44,11 +44,11 @@ public class DbUtil {
 //			while(result.next()) {
 //				System.out.println(result.getInt("id"));
 //			}
-//			System.out.println("Êı¾İ¿âÁ¬½Ó³É¹¦£¡");
+//			System.out.println("æ•°æ®åº“è¿æ¥æˆåŠŸï¼");
 //			
 //		}catch(Exception e) {
 //			e.printStackTrace();
-//			System.out.println("Êı¾İ¿âÁ¬½ÓÊ§°Ü£¡");
+//			System.out.println("æ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
 //		}
 //	}
 }

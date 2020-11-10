@@ -12,7 +12,7 @@ import top.cla.util.StringUtil;
 public class BookTypeDao {
 	
 	/**
-	 * Ìí¼ÓÍ¼ÊéÀà±ğ·½·¨
+	 * æ·»åŠ å›¾ä¹¦ç±»åˆ«æ–¹æ³•
 	 * @param con
 	 * @param bt
 	 * @return int
@@ -20,73 +20,73 @@ public class BookTypeDao {
 	 */
 	public int addBookType(Connection con,BookType bt) throws Exception {
 		int resultId;
-		//MySQLÓï¾ä
+		//MySQLè¯­å¥
 		String selectSql = "select * from t_booktype order by id desc limit 1";
 		String insertSql = "insert into t_booktype(id,bookTypeName,bookTypeDesc) values (?,?,?)";
 		
-		//ÏÈ²éÑ¯×îºóÒ»Ìõ¼ÇÂ¼µÄIDÖµ
+		//å…ˆæŸ¥è¯¢æœ€åä¸€æ¡è®°å½•çš„IDå€¼
 		PreparedStatement prePs = con.prepareStatement(selectSql);
 		ResultSet result = prePs.executeQuery();
 		if(result.next()) {
 			resultId = result.getInt("id");
-			resultId++;//×ª±äÎªĞÂÍ¼ÊéÀà±ğµÄid
+			resultId++;//è½¬å˜ä¸ºæ–°å›¾ä¹¦ç±»åˆ«çš„id
 		}else {
 			resultId = 1;
 		}
 		
-		//×¼±¸½«MySQLÓï¾ä·¢ËÍ¸øÊı¾İ¿âÏµÍ³
+		//å‡†å¤‡å°†MySQLè¯­å¥å‘é€ç»™æ•°æ®åº“ç³»ç»Ÿ
 		PreparedStatement ps = con.prepareStatement(insertSql);
 		ps.setInt(1, resultId);
 		ps.setString(2, bt.getBookTypeName());
 		ps.setString(3, bt.getBookTypeDesc());
 		
-		//Ö´ĞĞmysqlÓï¾ä£¬²¢·µ»Ø
+		//æ‰§è¡Œmysqlè¯­å¥ï¼Œå¹¶è¿”å›
 		return ps.executeUpdate();
 	}
 	
 	/**
-	 *  ²éÑ¯Í¼ÊéÀà±ğ·½·¨
+	 *  æŸ¥è¯¢å›¾ä¹¦ç±»åˆ«æ–¹æ³•
 	 * @param con
 	 * @param bt
 	 * @return ResultSet
 	 * @throws Exception 
 	 */
 	public ResultSet selectBookType(Connection con,BookType bt) throws Exception {
-		StringBuffer sql = new StringBuffer("select * from t_booktype");//ÏÈ¶¨Òå»ù´¡mySQLÓï¾ä
+		StringBuffer sql = new StringBuffer("select * from t_booktype");//å…ˆå®šä¹‰åŸºç¡€mySQLè¯­å¥
 		
-		//Èç¹ûÓĞÍ¼ÊéÀàĞÍÃû£¬Ôò°´ÕÕÍ¼ÊéÀàĞÍÃûÄ£ºı²éÑ¯£¬·ñÔòÖ±½Ó²éÑ¯È«²¿
+		//å¦‚æœæœ‰å›¾ä¹¦ç±»å‹åï¼Œåˆ™æŒ‰ç…§å›¾ä¹¦ç±»å‹åæ¨¡ç³ŠæŸ¥è¯¢ï¼Œå¦åˆ™ç›´æ¥æŸ¥è¯¢å…¨éƒ¨
 		if(!StringUtil.strIsEmpty(bt.getBookTypeName())) {
-			sql.append(" where bookTypeName like '%"+ bt.getBookTypeName() +"%'");//ÔÙÆ´½ÓºóÃæ´ø²ÎÊıµÄmySQLÓï¾ä
+			sql.append(" where bookTypeName like '%"+ bt.getBookTypeName() +"%'");//å†æ‹¼æ¥åé¢å¸¦å‚æ•°çš„mySQLè¯­å¥
 		}
 		
-		PreparedStatement ps = con.prepareStatement(sql.toString());//½«Óï¾ä×°Èë×¼±¸¶ÔÏó
-		ResultSet result = ps.executeQuery();//Ö´ĞĞ²éÑ¯mysqlÓï¾ä
+		PreparedStatement ps = con.prepareStatement(sql.toString());//å°†è¯­å¥è£…å…¥å‡†å¤‡å¯¹è±¡
+		ResultSet result = ps.executeQuery();//æ‰§è¡ŒæŸ¥è¯¢mysqlè¯­å¥
 		
 		return result;
 	}
 	
 	/**
-	 * É¾³ıÖ¸¶¨idÍ¼ÊéÀà±ğ·½·¨
+	 * åˆ é™¤æŒ‡å®šidå›¾ä¹¦ç±»åˆ«æ–¹æ³•
 	 * @param con
 	 * @param id
 	 * @return
 	 * @throws Exception
 	 */
 	public boolean deleteBookType(Connection con,int id) throws Exception {
-		String sql = "delete from t_booktype where id=?";//¶¨ÒåmysqlÓï¾ä
+		String sql = "delete from t_booktype where id=?";//å®šä¹‰mysqlè¯­å¥
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, id);
 		int result = ps.executeUpdate();
-		//ÅĞ¶ÏÊÇ·ñÉ¾³ı³É¹¦
+		//åˆ¤æ–­æ˜¯å¦åˆ é™¤æˆåŠŸ
 		if(result > 0) {
-			return true;//²Ù×÷´óÓÚµÈÓÚÒ»Ìõ¼ÇÂ¼£¬É¾³ı³É¹¦
+			return true;//æ“ä½œå¤§äºç­‰äºä¸€æ¡è®°å½•ï¼Œåˆ é™¤æˆåŠŸ
 		}else {
-			return false;//²Ù×÷ÎªÁãÌõ¼ÇÂ¼»òÆäËû£¬É¾³ıÊ§°Ü
+			return false;//æ“ä½œä¸ºé›¶æ¡è®°å½•æˆ–å…¶ä»–ï¼Œåˆ é™¤å¤±è´¥
 		}
 	}
 	
 	/**
-	 * ĞŞ¸ÄÖ¸¶¨idÍ¼ÊéÀà±ğ·½·¨
+	 * ä¿®æ”¹æŒ‡å®šidå›¾ä¹¦ç±»åˆ«æ–¹æ³•
 	 * @param con
 	 * @param id
 	 * @param bt
@@ -101,11 +101,11 @@ public class BookTypeDao {
 		ps.setString(3, bt.getBookTypeDesc());
 		ps.setInt(4, id);
 		int result = ps.executeUpdate();
-		//ÅĞ¶ÏÊÇ·ñÉ¾³ı³É¹¦
+		//åˆ¤æ–­æ˜¯å¦åˆ é™¤æˆåŠŸ
 		if(result > 0) {
-			return true;//²Ù×÷´óÓÚµÈÓÚÒ»Ìõ¼ÇÂ¼£¬É¾³ı³É¹¦
+			return true;//æ“ä½œå¤§äºç­‰äºä¸€æ¡è®°å½•ï¼Œåˆ é™¤æˆåŠŸ
 		}else {
-			return false;//²Ù×÷ÎªÁãÌõ¼ÇÂ¼»òÆäËû£¬É¾³ıÊ§°Ü
+			return false;//æ“ä½œä¸ºé›¶æ¡è®°å½•æˆ–å…¶ä»–ï¼Œåˆ é™¤å¤±è´¥
 		}
 	}
 }

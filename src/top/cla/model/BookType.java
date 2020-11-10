@@ -2,7 +2,7 @@ package top.cla.model;
 
 
 /**
- * Êé±¾ÀàĞÍÀà
+ * ä¹¦æœ¬ç±»å‹ç±»
  * @author 12049
  *
  */
@@ -36,7 +36,7 @@ public class BookType {
 	}
 	
 	/**
-	 * ÓĞ²Î¹¹Ôìº¯Êı
+	 * æœ‰å‚æ„é€ å‡½æ•°
 	 * @param bookTypeName
 	 * @param bookTypeDesc
 	 */
@@ -47,7 +47,7 @@ public class BookType {
 	}
 	
 	/**
-	 * ÎŞ²Î¹¹Ôìº¯Êı
+	 * æ— å‚æ„é€ å‡½æ•°
 	 */
 	public BookType() {
 		super();

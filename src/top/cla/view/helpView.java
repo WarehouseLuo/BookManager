@@ -40,21 +40,21 @@ public class helpView extends JInternalFrame {
 		setBounds(100, 100, 1000, 600);
 		
 		JLabel lblNewLabel = new JLabel("\u8F6F\u4EF6\u540D\u79F0\uFF1A  \u56FE\u4E66\u7BA1\u7406\u7CFB\u7EDF");
-		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("瀹嬩綋", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_1 = new JLabel("\u4F5C\u8005\uFF1A      \u7F57\u7AE3\u6E90");
-		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 20));
+		lblNewLabel_1.setFont(new Font("瀹嬩綋", Font.PLAIN, 20));
 		
 		JLabel lblNewLabel_2 = new JLabel("\u7248\u672C\u53F7\uFF1A    1.00.01");
-		lblNewLabel_2.setFont(new Font("宋体", Font.PLAIN, 20));
+		lblNewLabel_2.setFont(new Font("瀹嬩綋", Font.PLAIN, 20));
 		
 		JButton btnNewButton = new JButton("\u786E\u5B9A");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				confirmActionPerformed(e);//关闭窗口
+				confirmActionPerformed(e);//鍏抽棴绐楀彛
 			}
 		});
-		btnNewButton.setFont(new Font("宋体", Font.PLAIN, 20));
+		btnNewButton.setFont(new Font("瀹嬩綋", Font.PLAIN, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -89,7 +89,7 @@ public class helpView extends JInternalFrame {
 	}
 
 	/**
-	 * 关闭窗口
+	 * 鍏抽棴绐楀彛
 	 * @param e
 	 */
 	protected void confirmActionPerformed(ActionEvent e) {

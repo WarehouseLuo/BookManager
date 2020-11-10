@@ -1,18 +1,18 @@
 package top.cla.util;
 
 /**
- * ÅĞ¶Ï×Ö·û´®¹¤¾ßÀà
+ * åˆ¤æ–­å­—ç¬¦ä¸²å·¥å…·ç±»
  * @author victor
  */
 public class StringUtil {
 	/**
-	 * ÅĞ¶Ï×Ö·û´®ÊÇ·ñÎª¿Õ
+	 * åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦ä¸ºç©º
 	 * @param str
 	 * @return boolean
 	 */
 	public static boolean strIsEmpty(String str) {
 		if(str == null || "".equals(str)) {
-			//×Ö·û´®Îª¿Õ
+			//å­—ç¬¦ä¸²ä¸ºç©º
 			return true;
 		}else {
 			return false;

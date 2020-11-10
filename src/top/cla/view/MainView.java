@@ -86,7 +86,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("   \u7C7B\u522B\u6DFB\u52A0   ");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showBookTypeView();//显示添加图书类型窗口
+				showBookTypeView();//鏄剧ず娣诲姞鍥句功绫诲瀷绐楀彛
 			}
 		});
 		mnNewMenu_1_1.add(mntmNewMenuItem_3);
@@ -108,7 +108,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("   \u5E2E\u52A9  ");
 		mntmNewMenuItem_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				helpActionPerformed(e);//显示帮助窗口
+				helpActionPerformed(e);//鏄剧ず甯姪绐楀彛
 			}
 		});
 		mnNewMenu_1_2.add(mntmNewMenuItem_5);
@@ -125,7 +125,7 @@ public class MainView extends JFrame {
 	}
 	
 	/**
-	 * 显示帮助窗口
+	 * 鏄剧ず甯姪绐楀彛
 	 * @param e
 	 */
 	protected void helpActionPerformed(ActionEvent e) {
@@ -135,7 +135,7 @@ public class MainView extends JFrame {
 	}
 
 	/**
-	 * 显示图书类型管理窗口
+	 * 鏄剧ず鍥句功绫诲瀷绠＄悊绐楀彛
 	 */
 	protected void BookTypeManageActionPerformed() {
 		BookTypeManage btm = new BookTypeManage();
@@ -144,7 +144,7 @@ public class MainView extends JFrame {
 	}
 
 	/**
-	 * 显示添加图书类型窗口
+	 * 鏄剧ず娣诲姞鍥句功绫诲瀷绐楀彛
 	 */
 	protected void showBookTypeView() {
 		BookTypeAddView btav = new BookTypeAddView();
